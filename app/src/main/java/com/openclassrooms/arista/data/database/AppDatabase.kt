@@ -61,7 +61,7 @@ abstract class AppDatabase : RoomDatabase() {
 
         suspend fun populateDatabase(sleepDao: SleepDtoDao, userDtoDao: UserDtoDao) {
 
-            //TODO DELETE ALL SLEEP
+            sleepDao.deleteAll()
 
             sleepDao.insertSleep(
                 SleepDto(

@@ -18,4 +18,7 @@ interface SleepDtoDao {
 
     @Query("DELETE FROM sleep WHERE id = :id")
     suspend fun deleteSleepById(id: Long)
+
+    @Query("DELETE FROM sleep")
+    suspend fun deleteAll()
 }
