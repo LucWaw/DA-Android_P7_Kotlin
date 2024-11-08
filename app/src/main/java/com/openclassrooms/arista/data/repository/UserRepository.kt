@@ -6,6 +6,7 @@ import com.openclassrooms.arista.domain.model.User
 class UserRepository(private val userDtoDao: UserDtoDao) {
 
     suspend fun getUser() : User{
+        //get the user
         return User.fromDto(userDtoDao.getUserById(1))
     }
 }

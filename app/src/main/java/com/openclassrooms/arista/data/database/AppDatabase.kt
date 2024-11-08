@@ -59,6 +59,12 @@ abstract class AppDatabase : RoomDatabase() {
         }
 
 
+        /**
+         * Prepopulate the database
+         *
+         * @param sleepDao dao for sleep data
+         * @param userDtoDao dao for user data
+         */
         suspend fun populateDatabase(sleepDao: SleepDtoDao, userDtoDao: UserDtoDao) {
 
             sleepDao.deleteAll()
