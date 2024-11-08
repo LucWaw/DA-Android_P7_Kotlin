@@ -1,12 +1,16 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
     id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
+    id("androidx.room")
 }
 
 android {
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
+
     namespace = "com.openclassrooms.arista"
     compileSdk = 34
 
@@ -28,6 +32,7 @@ android {
                 "proguard-rules.pro"
             )
         }
+
     }
     compileOptions {
         // Flag to enable support for the new language APIs
@@ -47,9 +52,9 @@ android {
 dependencies {
 
     //Hilt
-    implementation("com.google.dagger:hilt-android:2.42")
-    implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
-    kapt("com.google.dagger:hilt-android-compiler:2.42")
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    implementation("androidx.hilt:hilt-navigation-fragment:1.2.0")
+    ksp("com.google.dagger:hilt-android-compiler:2.51")
 
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -68,8 +73,5 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-}
-kapt {
-    correctErrorTypes = true
 }
 

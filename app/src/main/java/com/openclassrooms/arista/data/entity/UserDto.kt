@@ -11,8 +11,8 @@ data class UserDto(
     var id: Long = 0,
 
 
-    @ColumnInfo(name = "nom")
-    var nom: String,
+    @ColumnInfo(name = "name")
+    var name: String,
 
 
     @ColumnInfo(name = "email")

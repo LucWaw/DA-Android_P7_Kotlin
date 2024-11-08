@@ -26,8 +26,10 @@ abstract class AppDatabase : RoomDatabase() {
     private class AppDatabaseCallback(
         private val scope: CoroutineScope
     ) : Callback() {
-        override fun onCreate(db: SupportSQLiteDatabase) {
-            super.onCreate(db)
+
+
+        override fun onOpen(db: SupportSQLiteDatabase) {
+            super.onOpen(db)
             INSTANCE?.let { database ->
                 scope.launch {
                     populateDatabase(database.sleepDtoDao(), database.userDtoDao())
@@ -59,6 +61,7 @@ abstract class AppDatabase : RoomDatabase() {
 
         suspend fun populateDatabase(sleepDao: SleepDtoDao, userDtoDao: UserDtoDao) {
 
+            //TODO DELETE ALL SLEEP
 
             sleepDao.insertSleep(
                 SleepDto(
@@ -72,7 +75,7 @@ abstract class AppDatabase : RoomDatabase() {
                         .toEpochMilli(), duration = 450, quality = 3
                 )
             )
-            userDtoDao.insertUser(
+            userDtoDao.addUser(
                 UserDto(1, "Lucas","super.mail@gmail.com", "mdp")
             )
         }
